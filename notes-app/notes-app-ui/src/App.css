@@ -69,14 +69,31 @@ textarea, input {
 
 .note-form button {
   border-radius: 5px;
-  background-color: sienna;
+  background-color: darkcyan;
   border: none;
   padding: 10px;
   font-size: 16px;
   color: white;
+  &:hover {
+    background-color: saddlebrown;
+    cursor: pointer;
+  }
 }
 
-.note-form button:hover {
-  background-color: saddlebrown;
-  cursor: pointer;
+.edit-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 5px;
+}
+
+.edit-buttons button {
+  flex: 1;
+}
+
+.edit-buttons button:last-of-type {
+  background-color: firebrick;
+  color: white;
+  &:hover {
+    background-color: sienna;
+  }
 }
