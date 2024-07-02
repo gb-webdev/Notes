@@ -41,20 +41,34 @@ const App = () => {
       setContent(note.content)
     }
 
-  const handleAddNote = (
+  const handleAddNote = async (
     event: React.FormEvent
   ) => {
     event.preventDefault()
+    try {
 
-    const newNote: Note = {
-      id: notes.length + 1,
-      title: title,
-      content: content
+      const response =
+        await fetch("http:localhost:5000/api/notes",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              title,
+              content
+            })
+          }
+        )
+
+        const newNote = await response.json()
+
+      setNotes([newNote, ...notes])
+      setTitle('')
+      setContent('')
+    } catch (e) {
+      console.log(e)
     }
-
-    setNotes([newNote, ...notes])
-    setTitle('')
-    setContent('')
   }
 
   const handleUpdateNote = (
