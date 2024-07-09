@@ -1,6 +1,7 @@
 body {
   margin: 5%;
-  background-color: #B8D1BE;
+  background-image: url('https://cdn.pixabay.com/photo/2012/12/24/08/39/background-72250_1280.jpg');
+  background-size: cover;
 }
 
 .app-container {
@@ -17,25 +18,38 @@ body {
 
 .notes-grid {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(250px, 1fr)
-  );
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-auto-rows: minmax(250px, auto);
   gap: 20px;
-  
-  border-radius: 5px;
 }
 
 .note-item {
   display: flex;
   flex-direction: column;
-  border: 1pm solid #ccc;
   padding: 10px;
   border-radius: 5px;
-  background-color: #89B0AD;
-  box-shadow: 0px 0px 10px rgba(39,95,150,255);
+  background-color: #feff9c;
+  box-shadow: -5px 6px 15px rgba(0, 0, 0, 1.3);
   cursor: pointer;
+  transform: rotate(-2deg);
+  transition: transform 0.2s;
+  position: relative;
+}
+
+.note-item::before {
+  content: '';
+  width: 40px;
+  height: 40px;
+  background-image: url('https://www.pngall.com/wp-content/uploads/4/Red-Pin-PNG-Pic.png');
+  background-size: cover;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.note-item:hover {
+  transform: rotate(0deg);
 }
 
 .notes-header {
@@ -46,17 +60,20 @@ body {
 .notes-header button {
   font-size: 16px;
   border-radius: 5px;
-  border: 1pm solid #000000;
-  background: transparent;
+  border: 1px solid #000000;
   background-color: #D694B0;
   cursor: pointer;
-  max-width: fit-content;
-  text-align: center;
-  align-items: center;
+  padding: 5px;
+  transition: background-color 0.2s;
+}
+
+.notes-header button:hover {
+  background-color: #b86a8c;
 }
 
 h2 {
   margin: 0;
+  margin-bottom: 10px;
 }
 
 .note-form {
@@ -67,23 +84,27 @@ h2 {
 
 textarea, input {
   border-radius: 5px;
-  background-color: #89B0AD;
-  border: 1pm solid black;
+  background-color: #feff9c;
+  border: 1px solid black;
   padding: 10px;
   font-size: 16px;
+  box-shadow: -5px 6px 15px rgba(0, 0, 0, 0.8);
 }
 
 .note-form button {
   border-radius: 5px;
-  background-color: #5B557F;
+  background-color: #b2e4ef;
   border: none;
   padding: 10px;
   font-size: 16px;
-  color: white;
-  &:hover {
-    background-color: saddlebrown;
-    cursor: pointer;
-  }
+  color: black;
+  transition: background-color 0.2s;
+  box-shadow: -5px 6px 15px rgba(0, 0, 0, 0.8);
+}
+
+.note-form button:hover {
+  background-color: #94c7d4;
+  cursor: pointer;
 }
 
 .edit-buttons {
@@ -97,9 +118,11 @@ textarea, input {
 }
 
 .edit-buttons button:last-of-type {
-  background-color: #ff8181;
-  color: white;
-  &:hover {
-    background-color: sienna;
-  }
+  background-color: #D694B0;
+  color: black;
+  transition: background-color 0.2s;
+}
+
+.edit-buttons button:last-of-type:hover {
+  background-color: #b86a8c;
 }
